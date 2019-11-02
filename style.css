@@ -1,0 +1,109 @@
+body {
+  background-image: url('background.jpg');
+  margin: 20px;
+  padding: 20px;
+}
+
+#todoitem {
+  padding: 3px;
+  border-radius: 6px;
+}
+
+#category {
+  padding: 3px;
+  border-radius: 6px;
+}
+
+#datepicker {
+  margin: 10px 50px 10px 0px;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+#addBtn {
+  border-radius: 100%;
+  padding: 3px;
+
+}
+
+h1 {
+  color: rgba(31, 18, 39, 0.788);
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, red, blue);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
+
+span {
+  padding: 20px;
+  margin-right: 30px;
+}
+
+li {
+  display: flex;
+}
+
+.col1 {
+  display: inline-block;
+  width: 32px;
+  width: 200px;
+  padding: 0px;
+
+}
+
+.col2 {
+  display: inline-block;
+  width: 100px;
+  padding: 0px;
+  align-items: stretch;
+}
+
+.col3 {
+  display: inline-block;
+  width: 50px;
+  padding: 0px;
+  align-items: stretch;
+}
+
+.delbtn {
+  display: inline-block;
+  background: transparent;
+  padding: 0px;
+  border-radius: 12px;
+  border: none !important;
+}
+
+#searchtodo {
+  margin: 0px 0px 10px 0px;
+  width: 200px;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+#chooseall {
+  margin: 5px 10px 5px 0px;
+}
+
+#choosechores {
+  margin: 5px 10px 5px 0px;
+}
+
+#chooseddl {
+  margin: 5px 10px 5px 0px;
+}
+
+#choosetraining {
+  margin: 5px 10px 5px 0px;
+}
+
+#choosetravel {
+  margin: 5px 10px 5px 0px;
+}

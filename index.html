@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>To Do list</h1>
+
+  <form id="createtodo">
+    <input type="text" value="Other" onfocus="this.value = ''" checked id="todoitem">
+    <select name="choosetodo" id="category">
+      <option value="chores">Chores</option>
+      <option value="ddl">DDL</option>
+      <option value="training">Training</option>
+      <option value="travel">Travel</option>
+    </select>
+    <br>
+    <input type="date" id="datepicker">
+    <button id="addBtn" value="Add">➕</button>
+    <!-- 增加后，希望清空填写内容 -->
+
+  </form>
+
+  <div id="filter">
+    <h3>Search by:</h3>
+    <input type="text" id="searchtodo">
+    <br>
+    <input type="radio" name="todoboddy" value="All" id="chooseall" checked>All
+    <input type="radio" name="todoboddy" value="Chores" id="choosechores">Chores
+    <input type="radio" name="todoboddy" value="DDL" id="chooseddl">DDL
+    <input type="radio" name="todoboddy" value="Training" id="choosetraining">Training
+    <input type="radio" name="todoboddy" value="Travel" id="choosetravel">Travel
+  </div>
+
+  <div id="handleInfo">
+    <p>What's next?</p>
+    <ul id="todoLists">
+    </ul>
+  </div>
+  <script type="application/javascript" src="main.js"></script>
+</body>
+
+</html>
