@@ -1,33 +1,6 @@
-/* <input name="textfield" type="text"  maxlength="20" value="请输入文字.."
-    οnfοcus="if (value =='请输入文字..'){value =''}"
-    οnblur="if (value ==''){value='请输入文字..'}" />
-<br><br>
-textarea:
-<textarea cols="50" rows="5" id="textarea" οnfοcus="if(value=='限100字'){value=''}"
-    οnblur="if (value ==''){value='限100字'}">限100字</textarea> */
 const createtodo = document.querySelector('#createtodo') //form
 const todoitemField = document.querySelector('#todoitem') //input
 const todocategory = document.querySelector('#category') //select
-
-//todoitemField 增加focus blur
-/* todoitemField.addEventListener('click', function () {
-  todoitemField.innerHTML = ''
-  const input = document.createElement('input')
-  input.type = 'text'
-  input.value = todoitemField.textContent
-  createtodo.removeChild(todoitemField)
-  createtodo.appendChild(input)
-  input.focus()
-
-  input.addEventListener('blur', function () {
-    if (input.value === '') {
-      input.value = 'Other'
-    }
-    todoitemField.textContent = input.value
-    createtodo.removeChild(input)
-    createtodo.appendChild(todoitemField)
-  })
-}) */
 
 //set date to today as default
 const datepickerField = document.querySelector('#datepicker')
@@ -84,7 +57,7 @@ const chooseall = document.querySelector('#chooseall')
 const choosechores = document.querySelector('#choosechores')
 const chooseddl = document.querySelector('#chooseddl')
 const choosetraining = document.querySelector('#choosetraining')
-const choosetravel = document.querySelector('#choosetravel')
+const choosefun = document.querySelector('#choosefun')
 
 //bind event to 5 radio buttons to show relevant todo list
 chooseall.addEventListener('click', function () {
@@ -124,11 +97,11 @@ choosetraining.addEventListener('click', function () {
   search()
 })
 
-choosetravel.addEventListener('click', function () {
+choosefun.addEventListener('click', function () {
   document.querySelectorAll('li').forEach(li => {
     li.style.display = 'none'
   })
-  document.querySelectorAll('.travel').forEach(item => {
+  document.querySelectorAll('.fun').forEach(item => {
     item.style.display = 'inline'
   })
   search()
@@ -173,23 +146,34 @@ function dateCheck() {
   for (let i = 0; i < dateLists.length; i++) {
     if (dateLists[i].innerHTML < new Date().toDateInputValue()) {
       dateLists[i].parentNode.style.color = 'red'
-      examOverdate()
+      reminderShow()
     }
   }
 }
 
-//remind user about overdate todo
-function examOverdate() {
-  const warning = document.createElement('p')
-  warning.innerHTML = ''
-  warning.textContent = 'Do you want to delete overdate issues?'
-  warning.style.color = 'red'
-  warning.style.fontStyle = 'italic'
-  document.querySelector('#handleInfo p').appendChild(warning)
-  if (document.querySelector("#handleInfo>p>p:nth-child(2)").textContent.includes('delete')) {
-    document.querySelector("#handleInfo>p>p:nth-child(2)").parentNode.removeChild(document.querySelector("#handleInfo>p>p:nth-child(2)"))
+//判断条件：如果红色，且状态为inline，才进行提醒。
+const handleInfo = document.querySelector('#handleInfo')
+
+function reminderShow() {
+  //得到所有li元素
+  if (handleInfo.firstChild.innerHTML === 'Do you want to delete overdate issues?') {
+    return
   }
-  //deleteAllOverdateReminder()
+  const lis = todoLists.querySelectorAll('li')
+
+  for (let i = 0; i < lis.length; i++) {
+    //如果红色，且显示状态
+    if (lis[i].style.display === 'inline' && lis[i].style.color === 'red') {
+      //提示信息，停止检查
+      const warning = document.createElement('p')
+      warning.innerHTML = ''
+      warning.textContent = 'Do you want to delete overdate issues?'
+      warning.style.color = 'red'
+      warning.style.fontStyle = 'italic'
+      handleInfo.prepend(warning)
+      break
+    }
+  }
 }
 
 //增加点击后增加删除线功能，表示完成。
