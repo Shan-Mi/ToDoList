@@ -60,12 +60,12 @@ addBtn.addEventListener('click', function () {
   li.innerHTML = `<span class = 'col1 todoitem'>${todo}</span><span class = 'col2 date'>${date}</span><span class = 'col3 type'>${type}</span><button class="delbtn">🗑️</button><br>`
   li.classList.add(type)
   li.style.display = 'inline'
+
   todoLists.appendChild(li)
   setDefaultDate()
   todoitemField.value = 'Other'
   //类别恢复原始状态？how？
   dateCheck()
-  examOverdate()
   deleteItem()
 })
 
@@ -100,7 +100,6 @@ choosechores.addEventListener('click', function () {
   })
   document.querySelectorAll('.chores').forEach(item => {
     item.style.display = 'inline'
-
   })
   search()
 })
@@ -163,6 +162,7 @@ function deleteItem() {
     deleteBtns[i].addEventListener('click', function () {
       console.log('opps..')
       this.parentNode.parentNode.removeChild(this.parentNode)
+
     })
   }
 }
@@ -173,6 +173,7 @@ function dateCheck() {
   for (let i = 0; i < dateLists.length; i++) {
     if (dateLists[i].innerHTML < new Date().toDateInputValue()) {
       dateLists[i].parentNode.style.color = 'red'
+      examOverdate()
     }
   }
 }
@@ -188,8 +189,29 @@ function examOverdate() {
   if (document.querySelector("#handleInfo>p>p:nth-child(2)").textContent.includes('delete')) {
     document.querySelector("#handleInfo>p>p:nth-child(2)").parentNode.removeChild(document.querySelector("#handleInfo>p>p:nth-child(2)"))
   }
+  //deleteAllOverdateReminder()
 }
 
 //增加点击后增加删除线功能，表示完成。
 
-//增加一键删除功能
+// todoLists.forEach(todo => {
+//   todo.addEventListener('click', function (ev) {
+//     if (ev.target.tagName === 'li') {
+//       ev.target.classList.toggle('checked');
+//     }
+//   }, false);
+// })
+
+//增加一键删除功能（有问题）
+function deleteAllOverdateReminder() {
+  const delAllBtn = document.createElement('button')
+  delAllBtn.innerHTML = `❌ Remove all`
+  document.querySelector('handleInfo>p').appendChild(delAllBtn)
+  delAllBtn.addEventListener('click', () => {
+    document.querySelectorAll('li').forEach(li => {
+      if (li.style.color === 'red') {
+        li.parentNode.parentNode.removeChild(li.parentNode)
+      }
+    })
+  })
+}
