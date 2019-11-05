@@ -1,6 +1,7 @@
 body {
   background-image: url('background.jpg');
-  margin: 20px;
+ 
+  margin: 50px 100px;
   padding: 20px;
 }
 
@@ -116,7 +117,7 @@ ul li.checked {
 }
 
 /* Add a "checked" mark when clicked on */
-ul li.checked::before {
+ul li.checked:before {
   content: '';
   position: absolute;
   border-color: #fff;
@@ -127,4 +128,19 @@ ul li.checked::before {
   transform: rotate(45deg);
   height: 15px;
   width: 7px;
+}
+
+.delAllBtn{
+  display: block;
+  width: 100px;
+  padding: 0px;
+  align-items: stretch;
+  border-radius: 6px;
+}
+
+#warning{
+  display: block;
+  height: 50px;
+  color: red;
+  font-style: italic;
 }
