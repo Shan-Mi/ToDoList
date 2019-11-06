@@ -144,3 +144,11 @@ ul li.checked:before {
   color: red;
   font-style: italic;
 }
+
+ul li:hover {
+  background: #ddd;
+}
+
+ul li:nth-child(odd) {
+  background: #bbb3b3;
+}

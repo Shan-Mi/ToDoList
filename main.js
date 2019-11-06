@@ -17,6 +17,7 @@ function setDefaultDate() {
 const addBtn = document.querySelector('#addBtn')
 const todoLists = document.querySelector('#todoLists')
 
+
 setDefaultDate()
 //bind event to addBtn to add one assignment to the todo list
 addBtn.addEventListener('click', function () {
@@ -38,7 +39,6 @@ addBtn.addEventListener('click', function () {
   setDefaultDate()
   todoitemField.value = 'Other'
   document.querySelector('#category').options[0].selected = 'selected'
-  //类别恢复原始状态？how？
   dateCheck()
   deleteItem()
 })
@@ -63,7 +63,7 @@ const choosechores = document.querySelector('#choosechores')
 const chooseddl = document.querySelector('#chooseddl')
 const choosetraining = document.querySelector('#choosetraining')
 const choosefun = document.querySelector('#choosefun')
-//bind event to 5 radio buttons to show relevant todo list
+//bind events to 5 radio buttons to show relevant todo list
 chooseall.addEventListener('click', function () {
   document.querySelectorAll('li').forEach(li => {
     li.style.display = 'inline'
@@ -116,8 +116,7 @@ choosefun.addEventListener('click', function () {
   //search(document.querySelectorAll('.fun'))
 })
 
-//search funtion 问题：delete错误输入后，无法实时监控输入数据
-//function search(lis) {
+//function search(lis) 
 const searchtodoField = document.querySelector('#searchtodo')
 searchtodoField.addEventListener('input', function (event) {
   //li => col 1
@@ -145,7 +144,9 @@ function deleteItem() {
   for (let i = 0; i < deleteBtns.length; i++) {
     deleteBtns[i].addEventListener('click', function () {
       console.log('opps..')
-      this.parentNode.parentNode.removeChild(this.parentNode)
+      let delbtnParent = deleteBtns[i].parentNode
+      todoLists.removeChild(delbtnParent)
+      // this.parentNode.parentNode.removeChild(this.parentNode)
     })
   }
 }
@@ -156,6 +157,8 @@ function dateCheck() {
   for (let i = 0; i < dateLists.length; i++) {
     if (dateLists[i].innerHTML < new Date().toDateInputValue()) {
       dateLists[i].parentNode.style.color = 'red'
+      //add li element a listName 'red'
+      dateLists[i].parentNode.classList.add('red')
       reminderShow()
     }
   }
@@ -170,24 +173,27 @@ function reminderShow() {
 }
 
 //增加点击后增加删除线功能，表示完成。
+function changeOutlook (){
+  const lis = document.querySelectorAll('li')
+  lis.forEach(li => {
+  li.addEventListener('click', function (ev) {
+    if (ev.target.tagName === 'li') {
+      ev.target.classList.toggle('checked');
+    }
+  }, false);
+})
+}
 
-// todoLists.forEach(todo => {
-//   todo.addEventListener('click', function (ev) {
-//     if (ev.target.tagName === 'li') {
-//       ev.target.classList.toggle('checked');
-//     }
-//   }, false);
-// })
 
+
+//delete all expired reminder at one time
 const delAllBtn = document.querySelector('.delAllBtn')
 
 delAllBtn.addEventListener('click', function () {
-  const todoLi = todoLists.children
-  for (let i = 0; i < todoLi.length; i++) {
-    while (todoLi[i].outerHTML.includes('red'))
-      todoLists.removeChild(todoLi[i])
-  }
-
+  const reds = todoLists.querySelectorAll('.red')
+  reds.forEach((red) => {
+    red.parentNode.removeChild(red)
+  })
   delAllBtn.style.display = 'none'
   warning.style.display = 'none'
 })
