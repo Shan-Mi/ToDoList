@@ -1,11 +1,15 @@
 body {
   background-image: url('background.jpg');
- 
   margin: 50px 100px;
   padding: 20px;
+  size: 100%;
+  background-image: linear-gradient(120deg, #5c89b3, #f3da96);
+  min-height: 100vh;
 }
 
 #todoitem {
+  max-width: 800px;
+  margin: auto;
   padding: 3px;
   border-radius: 6px;
 }
@@ -13,24 +17,27 @@ body {
 #category {
   padding: 3px;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 #datepicker {
   margin: 10px 50px 10px 0px;
   padding: 3px;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 #addBtn {
   border-radius: 100%;
   padding: 3px;
-
+  cursor: pointer;
 }
 
 h1 {
   color: rgba(31, 18, 39, 0.788);
+  font-size: 35px;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(to right, red, blue);
+  background: linear-gradient(to right, rgb(43, 72, 110), rgb(83, 29, 52));
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -49,6 +56,7 @@ span {
 }
 
 li {
+  width: 100%;
   display: flex;
 }
 
@@ -80,6 +88,7 @@ li {
   padding: 0px;
   border-radius: 12px;
   border: none !important;
+  cursor: pointer;
 }
 
 #searchtodo {
@@ -95,20 +104,23 @@ li {
 
 #choosechores {
   margin: 5px 10px 5px 0px;
+  cursor: pointer;
 }
 
 #chooseddl {
   margin: 5px 10px 5px 0px;
+  cursor: pointer;
 }
 
 #choosetraining {
   margin: 5px 10px 5px 0px;
+  cursor: pointer;
 }
 
-#choosetravel {
+#choosefun {
   margin: 5px 10px 5px 0px;
+  cursor: pointer;
 }
-
 
 ul li.checked {
   background: #888;
@@ -117,7 +129,7 @@ ul li.checked {
 }
 
 /* Add a "checked" mark when clicked on */
-ul li.checked:before {
+/* ul li.checked:before {
   content: '';
   position: absolute;
   border-color: #fff;
@@ -128,9 +140,9 @@ ul li.checked:before {
   transform: rotate(45deg);
   height: 15px;
   width: 7px;
-}
+} */
 
-.delAllBtn{
+.delAllBtn {
   display: block;
   width: 100px;
   padding: 0px;
@@ -138,7 +150,7 @@ ul li.checked:before {
   border-radius: 6px;
 }
 
-#warning{
+#warning {
   display: block;
   height: 50px;
   color: red;

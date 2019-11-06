@@ -17,7 +17,6 @@ function setDefaultDate() {
 const addBtn = document.querySelector('#addBtn')
 const todoLists = document.querySelector('#todoLists')
 
-
 setDefaultDate()
 //bind event to addBtn to add one assignment to the todo list
 addBtn.addEventListener('click', function () {
@@ -142,12 +141,15 @@ searchtodoField.addEventListener('input', function (event) {
 function deleteItem() {
   const deleteBtns = document.querySelectorAll('.delbtn')
   for (let i = 0; i < deleteBtns.length; i++) {
-    deleteBtns[i].addEventListener('click', function () {
-      console.log('opps..')
-      let delbtnParent = deleteBtns[i].parentNode
-      todoLists.removeChild(delbtnParent)
-      // this.parentNode.parentNode.removeChild(this.parentNode)
-    })
+
+    if (deleteBtns[i].getAttribute("addClickHandleFlag") !== "1") {
+      deleteBtns[i].setAttribute("addClickHandleFlag", "1")
+      deleteBtns[i].addEventListener('click', function () {
+        console.log('opps..')
+        console.log(this)
+        this.parentNode.parentNode.removeChild(this.parentNode)
+      })
+    }
   }
 }
 
@@ -172,19 +174,17 @@ function reminderShow() {
   delAllBtn.style.display = 'inline'
 }
 
-//增加点击后增加删除线功能，表示完成。
-function changeOutlook (){
-  const lis = document.querySelectorAll('li')
-  lis.forEach(li => {
-  li.addEventListener('click', function (ev) {
-    if (ev.target.tagName === 'li') {
-      ev.target.classList.toggle('checked');
-    }
-  }, false);
-})
-}
-
-
+// //增加点击后增加删除线功能，表示完成。
+// function changeOutlook() {
+//   const lis = document.querySelectorAll('li')
+//   lis.forEach(li => {
+//     li.addEventListener('click', function (ev) {
+//       if (ev.target.tagName === 'li') {
+//         ev.target.classList.toggle('checked');
+//       }
+//     }, false);
+//   })
+// }
 
 //delete all expired reminder at one time
 const delAllBtn = document.querySelector('.delAllBtn')
