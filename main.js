@@ -128,7 +128,7 @@ searchtodoField.addEventListener('input', function (event) {
   }
 
   lis.forEach(li => {
-    if (li.children[0].textContent.includes(event.currentTarget.value.toLowerCase())) {
+    if (li.children[0].textContent.toLowerCase().includes(event.currentTarget.value.toLowerCase())) {
       return li.style.display = 'inline'
     } else {
       li.style.display = 'none'

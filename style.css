@@ -1,6 +1,6 @@
 body {
   background-image: url('background.jpg');
-  margin: 50px 100px;
+  margin: 50px 80px;
   padding: 20px;
   size: 100%;
   background-image: linear-gradient(120deg, #5c89b3, #f3da96);
@@ -98,8 +98,9 @@ li {
   border-radius: 6px;
 }
 
-#chooseall {
+#chooseall{
   margin: 5px 10px 5px 0px;
+  cursor: pointer;
 }
 
 #choosechores {
@@ -163,4 +164,8 @@ ul li:hover {
 
 ul li:nth-child(odd) {
   background: #bbb3b3;
+}
+
+#handleInfo p span{
+  padding: 10px 0px 10px 10px;
 }
